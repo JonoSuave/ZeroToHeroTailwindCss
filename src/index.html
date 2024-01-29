@@ -6,6 +6,22 @@
 		<link href="../src/output.css" rel="stylesheet" />
 		<script defer src="../src/assets/fontawesome/js/"></script>
 		<script defer src="../src/assets/fontawesome/js/solid.min.js"></script>
+		<script>
+			window.onload = () => {
+				const mobileMenuButton = document.getElementById("mobile-menu-button");
+				mobileMenuButton.addEventListener("click", () => {
+					if (mobileMenuButton.classList.contains("open"))
+						mobileMenuButton.classList.remove("open");
+					else mobileMenuButton.classList.add("open");
+				});
+				const ticketsMenuItem = document.getElementById("tickets-menu-item");
+				ticketsMenuItem.addEventListener("click", () => {
+					if (ticketsMenuItem.classList.contains("open"))
+						ticketsMenuItem.classList.remove("open");
+					else ticketsMenuItem.classList.add("open");
+				});
+			};
+		</script>
 	</head>
 	<body>
 		<main>
@@ -15,7 +31,58 @@
 						<img src="./assets/images/logo-inverted.png" width="50" alt="logo" />
 						<div class="font-bold text-2xl">tw:<span class="text-sky-900">mf</span></div>
 					</div>
-					<div class="flex-1 flex items-center justify-end">
+					<div class="block md:hidden my-auto ml-auto cursor-pointer pr-4">
+						<div id="mobile-menu-button" class="group peer">
+							<div
+								class="relative top-0 w-8 rounded-full bg-zinc-200 h-1 group-open:rotate-45 group-open:top-2 transition-all"
+							></div>
+							<div
+								class="opacity-100 w-8 rounded-full bg-zinc-200 h-1 mt-1 group-open:opacity-0 transition-all"
+							></div>
+							<div
+								class="top-0 w-8 rounded-full bg-zinc-200 h-1 mt-1 group-open:-rotate-45 group-open:-top-2 relative transition-all"
+							></div>
+						</div>
+						<!-- //NOTE mobile menu hidden by default but open on click due to peer-open variant being
+						//NOTE applied to the div below -->
+						<div
+							class="absolute top-[62px] left-0 bg-gradient-to-r from-rose-500 to-pink-500 w-full peer-open:block hidden"
+						>
+							<div
+								class="relative flex h-full items-center justify-center p-4 font-bold text-pink-200 hover:text-zinc-200 hover:bg-white/10 transition-colors ease-in-out"
+							>
+								<span>Home</span>
+							</div>
+							<div
+								class="relative flex h-full items-center justify-center p-4 font-bold text-pink-200 hover:text-zinc-200 hover:bg-white/10 transition-colors ease-in-out"
+							>
+								<span>Lineup</span>
+							</div>
+							<div
+							id="tickets-menu-item"	class="group relative h-full cursor-pointer text-pink-200 hover:text-zinc-200 hover:bg-white/10 transition-colors ease-in-out"
+							>
+								<div class="p-4 text-center font-bold cursor-pointer">Tickets</div>
+								<div class="group-open:block hidden">
+									<div class="text-center p-4 relative text-pink-200 hover:bg-white/5 hover:text-zinc-200 transition-colors ease-in-out cursor-pointer">			
+										
+											<span>Single day ticket</span>
+										</div>
+									<div>
+									<div
+										class="text-center p-4 relative text-pink-200 hover:bg-white/5 hover:text-zinc-200 transition-colors ease-in-out cursor-pointer"
+									>
+										<span>Single day ticket</span>
+									</div>
+								</div>
+							</div>
+							<div
+								class="relative flex h-full items-center justify-center p-4 font-bold text-pink-200 hover:text-zinc-200 hover:bg-white/10 transition-colors ease-in-out"
+							>
+								<span>Support</span>
+							</div>
+						</div>
+					</div>
+					<div class="md:flex hidden flex-1 items-center justify-end">
 						<div class="menu-item">
 							<span>Home</span>
 						</div>
@@ -25,7 +92,7 @@
 						<div class="menu-item group">
 							<span>Tickets</span>
 							<div
-								class="group-hover:block bg-pink-500 absolute top-full right-0 whitespace-nowrap rounded-b-md text-right"
+								class="hidden bg-pink-500 absolute top-full right-0 whitespace-nowrap rounded-b-md text-right group-hover:block"
 							>
 								<div
 									class="p-4 font-bold hover:bg-white/5 hover:text-zinc-200 transition-colors ease-in-out cursor-pointer text-pink-200"
